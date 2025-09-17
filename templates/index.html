@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Machine Learning</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="static/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-white sticky-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold d-flex align-items-center gap-2" href="#">
+                <i class="bi bi-layers-fill text-danger"></i>
+                Machine Learning
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Alternar navegación">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center gap-lg-2">
+                    <li class="nav-item"><a class="nav-link active" href="index"><i class="bi bi-house-door-fill me-2"></i>Home</a></li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Casos de Uso</a>
+                        <ul class="dropdown-menu shadow">
+                            <li><a class="dropdown-item" href="caso1"><i class="bi bi-speedometer2 me-2"></i>PayPal - Detección de fraude en pagos</a></li>
+                            <li><a class="dropdown-item" href="caso2"><i class="bi bi-graph-up me-2"></i>Amazon – Sistemas de Recomendación Personalizados</a></li>
+                            <li><a class="dropdown-item" href="caso3"><i class="bi bi-diagram-3 me-2"></i>Netflix: Sistemas de Recomendación Personalizados</a></li>
+                            <li><a class="dropdown-item" href="caso4"><i class="bi bi-database me-2"></i> Uber: Optimización de Rutas y Transporte</a></li>
+                        </ul>
+                    </li>
+
+                     <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Regresion Lineal</a>
+                        <ul class="dropdown-menu shadow">
+                            <li><a class="dropdown-item" href="conceptoLineal"><i class="bi bi-speedometer2 me-2"></i> Conceptos básicos</a></li>
+                            <li><a class="dropdown-item" href="praticoLineal"><i class="bi bi-graph-up me-2"></i>Ejercicio práctico</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Regresion Logistica</a>
+                        <ul class="dropdown-menu shadow">
+                            <li><a class="dropdown-item" href="conceptoLogistica"><i class="bi bi-speedometer2 me-2"></i> Conceptos básicos</a></li>
+                            <li><a class="dropdown-item" href="praticoLogistica"><i class="bi bi-graph-up me-2"></i>Ejercicio práctico</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item ms-lg-2">
+                    <a href="https://github.com/emily-180/TareasML" class="btn btn-dark px-4">
+                        <i class="bi bi-github me-1"></i>GitHub
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container py-5 text-center">
+        <h1 class="fw-bold mb-3">Tareas con Python</h1>
+        <p class="lead text-muted mb-4">
+            Este proyecto tiene como objetivo comprender los conceptos de Machine Learning
+            y aplicarlos en ejemplos prácticos utilizando <strong>Python</strong> y 
+            <strong>Flask</strong>.
+        </p>
+
+        <section class="row justify-content-center g-4">
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm border-0">
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold">Integrantes</h5>
+                        <ul class="list-unstyled mb-0">
+                            <li>👩‍💻 Andres Camilo Oñate Hernandez</li>
+                            <li>👩‍💻 Carol Daniela Castañeda Gordillo</li>
+                            <li>👨‍💻 Emily Moreira Ferreira</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm border-0">
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold">Profesor</h5>
+                        <p class="mb-0">Ing. Edison Gustavo Canon Varela</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="text-center py-4 bg-light mt-5">
+        <small class="text-muted">
+            Proyecto académico • Universidad de Cundinamarca • 2025
+        </small>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
