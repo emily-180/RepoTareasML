@@ -69,8 +69,8 @@
                 <div class="position-sticky pt-3">
                     <ul class="nav flex-column">
                         <li class="nav-item"><a class="nav-link" href="#intro">Introducción</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#regresion">Modelo para variable objetivo binaria</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#linealidad">Probabilidad mediante sigmoide/logit</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#regresion">MModelo para variable objetivo binaria y la probabilidad mediante sigmoide/logita</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#dessallo">DESARROLLO DE EJERCICIO PRÁCTICO</a></li>
                         <li class="nav-item"><a class="nav-link" href="#conclusiones">Conclusiones</a></li>
                         <li class="nav-item"><a class="nav-link" href="#referencias">Referencias</a></li>
                     </ul>
@@ -83,7 +83,9 @@
                     <div class="card shadow-sm">
                         <div class="card-body">
                             <h2>Introducción</h2>
-                            <p>xxxx
+                            <p>La regresión logística es un método estadístico y de aprendizaje automático utilizado para predecir resultados que solo pueden pertenecer a dos categorías, como “sí/no” o “0/1”. A diferencia de la regresión lineal, que estima valores continuos, este modelo está diseñado para problemas de clasificación binaria (GeeksforGeeks, s.f.).
+En el ámbito del machine learning, la regresión logística se aplica cuando el objetivo es estimar la probabilidad de que una observación pertenezca a una clase determinada. Este algoritmo ajusta una función que permite separar los datos en dos grupos y es ampliamente utilizado en áreas como medicina, finanzas y análisis de comportamiento de usuarios (IBM, s.f.).
+
                             </p>
                         </div>
                     </div>
@@ -92,18 +94,28 @@
                 <section id="regresion" class="mb-5">
                     <div class="card shadow-sm">
                         <div class="card-body">
-                            <h2>Modelo para variable objetivo binaria</h2>
-                            <p>xxxxxxxx
+                            <h2>Modelo para variable objetivo binaria y la probabilidad mediante sigmoide/logit</h2>
+                            <p>El modelo se fundamenta en la idea de una variable objetivo binaria, en la cual el resultado esperado solo puede asumir dos valores mutuamente excluyentes, como “empleado/desempleado” o “aprobado/reprobado”. Para poder representar esta relación de manera matemática, el modelo transforma la combinación lineal de los predictores en una probabilidad dentro del rango [0,1]. Esto se logra mediante la función sigmoide o logística, que convierte cualquier valor real en una salida interpretable como probabilidad. De esta forma, no solo se clasifica en dos categorías, sino que también se obtiene una medida de confianza asociada a la predicción.
+                            El logit, por su parte, se define como el logaritmo de la razón de probabilidades (odds), es decir, la relación entre la probabilidad de que ocurra un evento frente a la probabilidad de que no ocurra. Esta transformación linealiza la relación entre las variables independientes y la variable dependiente, permitiendo que el modelo pueda ser estimado mediante métodos estadísticos tradicionales como la máxima verosimilitud. En otras palabras, el logit sirve como un puente matemático que conecta los predictores con la probabilidad de un resultado binario, facilitando tanto el ajuste del modelo como la interpretación de sus coeficientes (Medium, 2019).
+
                             </p>
                         </div>
                     </div>
                 </section>
 
-                <section id="linealidad" class="mb-5">
+                <section id="dessallo" class="mb-5">
                     <div class="card shadow-sm">
                         <div class="card-body">
-                            <h2>Probabilidad mediante sigmoide/logit</h2>
-                            <p>xxxx
+                            <h2>DESARROLLO DE EJERCICIO PRÁCTICO</h2>
+                            <p>ste trabajo utiliza regresión logística para predecir la probabilidad de que una persona se encuentre desempleada o empleada, a partir de ciertas características individuales.
+                            El tema central es la predicción de desempleo en función de variables que pueden influir en la situación laboral, como:
+                            <br>* Nivel educativo<br>
+                            <br>* Años de experiencia<br>
+                            <br>* Conocimientos técnicos <br>
+                            <br>* Edad<br>
+                            La regresión logística es un método de aprendizaje supervisado que permite clasificar resultados en dos categorías: en este caso, Sí (Desempleado) o No (Empleado). A diferencia de la regresión lineal, que predice valores numéricos continuos, la regresión logística trabaja con probabilidades y transforma los valores mediante la función sigmoide (logit), que entrega un resultado entre 0 y 1.
+                            En este modelo, cuando la probabilidad de desempleo supera un umbral definido (por ejemplo, 0.5), la persona se clasifica como “Desempleado”. De lo contrario, se clasifica como “Empleado”.
+                            Además, el sistema genera métricas de evaluación como la precisión, matriz de confusión y reporte de clasificación, lo que permite medir qué tan bien funciona el modelo con los datos de prueba.
                             </p>
                         </div>
                     </div>
@@ -113,7 +125,9 @@
                     <div class="card shadow-sm">
                         <div class="card-body">
                             <h2>Conclusiones</h2>
-                            <p>xxxxxxxxx</p>
+                            <p>La aplicación de regresión logística en este contexto permite comprender cómo ciertas variables influyen en la situación laboral. La elección del umbral de clasificación es clave, ya que valores más altos o bajos pueden generar cambios en la proporción de desempleados detectados. También es importante considerar el posible desbalance en los datos (por ejemplo, más casos de empleados que de desempleados), lo que puede afectar la calidad de las predicciones.
+                        Como mejoras futuras, se podrían aplicar técnicas de balanceo de clases, ajustar dinámicamente el umbral, o incluso probar modelos más complejos como árboles de decisión o redes neuronales. De esta forma, se lograría un sistema más robusto y preciso para apoyar la toma de decisiones en problemas relacionados con el desempleo.
+</p>
                         </div>
                     </div>
                 </section>
@@ -124,13 +138,25 @@
                             <h2>Referencias</h2>
                             <ul>
                                 <li>
-                                    Amazon Web Services. (s.f.). ¿Qué es la regresión lineal? AWS. Recuperado el 9 de
-                                    septiembre de 2025, de
-                                    <a href="https://aws.amazon.com/es/what-is/linear-regression/" target="_blank">
-                                        https://aws.amazon.com/es/what-is/linear-regression/
+                                    GeeksforGeeks. (s.f.). Understanding Logistic Regression. Recuperado el 17 de septiembre de 2025, de 
+                                    <a href="https://www.geeksforgeeks.org/machine-learning/understanding-logistic-regression" target="_blank">
+                                        https://www.geeksforgeeks.org/machine-learning/understanding-logistic-regression
+                                    </a>
+                                </li>
+                                <li>
+                                    IBM. (s.f.). What is Logistic Regression?. Recuperado el 17 de septiembre de 2025, de 
+                                    <a href="https://www.ibm.com/think/topics/logistic-regression" target="_blank">
+                                        https://www.ibm.com/think/topics/logistic-regression
+                                    </a>
+                                </li>
+                                <li>
+                                    Medium. (2019). Logistic Regression: A Detailed Explanation. Recuperado el 17 de septiembre de 2025, de 
+                                    <a href="https://medium.com/@anupchakole/logistic-regression-a-detailed-explanation-8508132d3a5a" target="_blank">
+                                        https://medium.com/@anupchakole/logistic-regression-a-detailed-explanation-8508132d3a5a
                                     </a>
                                 </li>
                             </ul>
+
                         </div>
                     </div>
                 </section>
