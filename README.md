@@ -1,6 +1,6 @@
-# Regression Logistica - Machine Learning
+# Machine Learning
 
-Este proyecto es una aplicación con **Flask** para presentar Regresion Logistica.  
+Este proyecto es una aplicación con **Flask**.  
 Incluye estructura con **HTML + CSS + Bootstrap**, y está listo para ejecutarse en cualquier máquina usando un entorno virtual de Python.
 
 ---
@@ -9,8 +9,8 @@ Incluye estructura con **HTML + CSS + Bootstrap**, y está listo para ejecutarse
 
 ### 1️⃣ Clonar el repositorio
 ```bash
-git clone https://github.com/emily-180/Regresion_Logistica.git
-cd Regresion_Logistica
+git clone https://github.com/emily-180/RepoTareasML
+cd RepoTareasML
 ```
 
 ### 2️⃣ Crear y activar el entorno virtual
