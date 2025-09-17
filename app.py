@@ -1,6 +1,7 @@
 from flask import Flask, render_template, redirect, url_for, request
 app = Flask(__name__)
 import regresionLinear
+import regresionLogistica
 
 @app.route("/")  
 def home():
@@ -42,6 +43,40 @@ def praticoLineal_result():
     grafico = regresionLinear.generarGrafico(cantidad, costo, calculateResult)
 
     return render_template("praticoLineal.html", result=calculateResult, grafico=grafico)
+
+@app.route("/conceptoLogistica")
+def conceptoLogistica():
+    return render_template("conceptoLogistica.html")
+
+@app.route("/praticoLogistica", methods=["GET", "POST"])
+def praticoLogistica():
+    result = None
+    label = None
+    probability = None
+    description = None
+    accuracy, report, conf_matrix_file = regresionLogistica.evaluate()
+
+    if request.method == "POST":
+        nivel = int(request.form["nivel"])
+        experiencia = int(request.form["experiencia"])
+        conocimientos = int(request.form["tecnicos"])
+        edad = int(request.form["edad"])
+
+        label, probability, description = regresionLogistica.predict_label(
+            [nivel, experiencia, conocimientos, edad]
+        )
+
+        result = description
+
+    return render_template(
+        "praticoLogistica.html",
+        result=result,                  
+        label=label,                    
+        probability=f"{(probability*100):.2f}%" if probability else None,
+        accuracy=f"{accuracy*100:.2f}%",
+        report=report,                  
+        conf_matrix_file=conf_matrix_file
+    )
 
 if __name__ == "__main__":
     app.run(debug=True)
