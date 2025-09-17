@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Conceptos Basicos - Regresión Lineal</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="static/style.css" rel="stylesheet">
+</head>
+
+<body data-bs-spy="scroll" data-bs-target="#sidebarMenu" data-bs-offset="80" tabindex="0">
+
+   <nav class="navbar navbar-expand-lg bg-white sticky-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold d-flex align-items-center gap-2" href="#">
+                <i class="bi bi-layers-fill text-danger"></i>
+                Machine Learning
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Alternar navegación">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center gap-lg-2">
+                    <li class="nav-item"><a class="nav-link active" href="index"><i class="bi bi-house-door-fill me-2"></i>Home</a></li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Casos de Uso</a>
+                        <ul class="dropdown-menu shadow">
+                            <li><a class="dropdown-item" href="caso1"><i class="bi bi-speedometer2 me-2"></i>PayPal - Detección de fraude en pagos</a></li>
+                            <li><a class="dropdown-item" href="caso2"><i class="bi bi-graph-up me-2"></i>Amazon – Sistemas de Recomendación Personalizados</a></li>
+                            <li><a class="dropdown-item" href="caso3"><i class="bi bi-diagram-3 me-2"></i>Netflix: Sistemas de Recomendación Personalizados</a></li>
+                            <li><a class="dropdown-item" href="caso4"><i class="bi bi-database me-2"></i> Uber: Optimización de Rutas y Transporte</a></li>
+                        </ul>
+                    </li>
+
+                     <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Regresion Lineal</a>
+                        <ul class="dropdown-menu shadow">
+                            <li><a class="dropdown-item" href="conceptoLineal"><i class="bi bi-speedometer2 me-2"></i> Conceptos básicos</a></li>
+                            <li><a class="dropdown-item" href="praticoLineal"><i class="bi bi-graph-up me-2"></i>Ejercicio práctico</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Regresion Logistica</a>
+                        <ul class="dropdown-menu shadow">
+                            <li><a class="dropdown-item" href="conceptoLogistica"><i class="bi bi-speedometer2 me-2"></i> Conceptos básicos</a></li>
+                            <li><a class="dropdown-item" href="praticoLogistica"><i class="bi bi-graph-up me-2"></i>Ejercicio práctico</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item ms-lg-2">
+                    <a href="https://github.com/emily-180/TareasML" class="btn btn-dark px-4">
+                        <i class="bi bi-github me-1"></i>GitHub
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row">
+
+            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+                <div class="position-sticky pt-3">
+                    <ul class="nav flex-column">
+                        <li class="nav-item"><a class="nav-link" href="#intro">Introducción</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#regresion">Regresión Lineal</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#linealidad">Linealidad</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#independencia">Independencia</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#homocedasticidad">Homocedasticidad</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#normalidad">Normalidad del error</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#conclusiones">Conclusiones</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#referencias">Referencias</a></li>
+                    </ul>
+                </div>
+            </nav>
+
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 py-4">
+
+                <section id="intro" class="mb-5">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <h2>Introducción</h2>
+                            <p>La regresión lineal es una técnica de análisis de datos que predice el valor de una
+                                variable desconocida (dependiente) utilizando el valor de otra variable relacionada y
+                                conocida (independiente), modelando esta relación mediante una ecuación lineal.
+                                Como explica el portal AWS: "La regresión lineal es una técnica de análisis de datos que
+                                predice el valor de datos desconocidos mediante el uso de otro valor de datos
+                                relacionado y conocido" (Amazon Web Services, s.f.).
+                                De forma similar, IBM define que "La regresión lineal es una técnica de análisis
+                                utilizada para predecir el valor de una variable dependiente basada en el valor de una o
+                                más variables independientes" (IBM s.f).
+                                En este trabajo aplicaremos la regresión lineal para predecir el precio de frutas según
+                                la cantidad producida y el costo de transporte, mostrando cómo este modelo puede ser
+                                utilizado en un contexto agrícola y económico.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="regresion" class="mb-5">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <h2>1. Regresión Lineal</h2>
+                            <p>En el contexto del Machine Learning, los algoritmos de regresión lineal se entrenan con
+                                datos históricos (etiquetados) para calcular la ecuación que mejor ajusta la relación
+                                entre variables, y luego predecir valores desconocidos.
+                                Por ejemplo, AWS menciona que en machine learning, "los programas de computación
+                                denominados algoritmos analizan grandes conjuntos de datos ... para calcular la ecuación
+                                de regresión lineal" (Amazon Web Services, s.f.).
+                                FlowHunt destaca que en inteligencia artificial y aprendizaje automático, la regresión
+                                lineal "suele ser el modelo introductorio debido a su simplicidad y efectividad para
+                                tratar relaciones lineales" (FlowHunt., s.f.).
+                                En términos generales, la regresión lineal busca modelar la relación entre las variables
+                                mediante una ecuación de la forma:
+                                donde Y es la variable dependiente, β son los coeficientes, X las variables
+                                independientes y ϵ el término de error.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="linealidad" class="mb-5">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <h2>2. Linealidad</h2>
+                            <p>En Machine Learning, la linealidad se refiere al concepto de que la relación existente
+                                entre las variables de entrada (predictoras) y la variable de salida (respuesta) puede
+                                ser representada mediante una línea recta o un plano. En términos sencillos: cuando se
+                                altera una variable, el impacto en la salida es siempre constante y proporcional.
+                                Estas propiedades se conocen como el principio de superposición. En esta definición, x
+                                no es necesariamente un número real, pero en general puede ser un elemento de cualquier
+                                espacio vectorial. Una definición más especial de función lineal, que no coincide con la
+                                definición de mapa lineal, se usa en matemáticas elementales.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="independencia" class="mb-5">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <h2>3. Independencia</h2>
+                            <p>En Machine Learning, la linealidad se refiere al concepto de que la relación existente
+                                entre las variables de entrada (predictoras) y la variable de salida (respuesta) puede
+                                ser representada mediante una línea recta o un plano. En términos sencillos: cuando se
+                                altera una variable, el impacto en la salida es siempre constante y proporcional.
+                                La independencia en el aprendizaje automático implica que las variables empleadas para
+                                entrenar el modelo no deben tener una dependencia mutua directa. En otras palabras, cada
+                                una debe contribuir con información diferente y no estar "repitiendo" lo mismo.
+                                Desde una perspectiva estadística, la independencia se refiere a que las características
+                                del conjunto de datos no muestran multicolinealidad y que los errores o residuos del
+                                modelo no están correlacionados. Esto garantiza que el modelo pueda aprender patrones
+                                auténticos y no ruido redundante.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="homocedasticidad" class="mb-5">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <h2>4. Homocedasticidad</h2>
+                            <p>En el contexto de machine learning la homocedasticidad se refiere a que los errores
+                                (residuos) del modelo tienen una varianza constante para todos los valores de las
+                                variables independientes.
+                                Esto quiere decir: Si graficamos los residuos vs. los valores predichos, deberían estar
+                                más o menos dispersos de manera uniforme (como una nube), Y no deberían verse patrones
+                                como un "abanico" que se abre o se cierra.
+                                Un ejemplo entendible puede ser que: Supongamos que predecimos los salarios en función
+                                de los años de experiencia. Si el modelo cumple homocedasticidad, el "error" entre lo
+                                que predecimos y lo que realmente gana cada persona debería ser más o menos igual tanto
+                                para los que tienen 1 año de experiencia como para los que tienen 20. Además la varianza
+                                de los errores cambia con el valor de la variable y esto hace que los intervalos de
+                                confianza y pruebas estadísticas no sean confiables, porque se subestima o sobreestima
+                                la precisión de las estimaciones.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="normalidad" class="mb-5">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <h2>5. Normalidad del error</h2>
+                            <p>Dentro del contexto de machine learning en el análisis de regresión lineal, uno de los
+                                supuestos más importantes es que los errores (también llamados residuos) se distribuyen
+                                de forma aproximadamente normal. Esto significa que, si representamos gráficamente los
+                                errores, deberían seguir una forma de campana, concentrándose la mayoría alrededor de
+                                cero y disminuyendo su frecuencia a medida que se alejan en valores positivos o
+                                negativos.
+                                La importancia de este supuesto radica en que permite aplicar pruebas estadísticas e
+                                intervalos de confianza de manera confiable. Cuando los errores son normales, los
+                                estimadores obtenidos en el modelo tienen mejores propiedades, y los resultados de las
+                                pruebas de significancia (como el valor p o los intervalos) son válidos.
+                                Si no se cumple la normalidad, las predicciones del modelo pueden seguir siendo útiles,
+                                pero la inferencia estadística (como verificar la significancia de los coeficientes)
+                                puede ser menos precisa. Por eso, normalmente se revisa este supuesto con pruebas
+                                estadísticas específicas o mediante gráficos como el histograma de los residuos o el
+                                gráfico Q-Q.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="conclusiones" class="mb-5">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <h2>Conclusiones</h2>
+                            <p>La regresión lineal es un modelo estadístico y de Machine Learning fundamental: sencillo,
+                                interpretable y ampliamente utilizado para predicciones cuando la relación entre
+                                variables es aproximadamente lineal. Su claridad y aplicabilidad la convierten en un
+                                punto de partida esencial en análisis y aprendizaje automático, aunque tiene supuestos
+                                importantes que deben ser verificados.
+                                En el caso de nuestro ejemplo con frutas, la regresión lineal es útil para estimar
+                                precios en función de la producción y los costos de transporte, aunque se debe tener
+                                precaución si existen factores externos que alteren la relación lineal.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="referencias" class="mb-5">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <h2>Referencias</h2>
+                            <ul>
+                                <li>
+                                    Amazon Web Services. (s.f.). ¿Qué es la regresión lineal? AWS. Recuperado el 9 de
+                                    septiembre de 2025, de
+                                    <a href="https://aws.amazon.com/es/what-is/linear-regression/" target="_blank">
+                                        https://aws.amazon.com/es/what-is/linear-regression/
+                                    </a>
+                                </li>
+                                <li>
+                                    IBM. (s.f.). ¿Qué es la regresión lineal? IBM Think. Recuperado el 9 de septiembre
+                                    de 2025, de
+                                    <a href="https://www.ibm.com/es-es/think/topics/linear-regression" target="_blank">
+                                        https://www.ibm.com/es-es/think/topics/linear-regression
+                                    </a>
+                                </li>
+                                <li>
+                                    FlowHunt. (s.f.). Regresión lineal. FlowHunt - Glosario. Recuperado el 9 de
+                                    septiembre de 2025, de
+                                    <a href="https://www.flowhunt.io/es/glossary/linear-regression/" target="_blank">
+                                        https://www.flowhunt.io/es/glossary/linear-regression/
+                                    </a>
+                                </li>
+                                <li>
+                                    Géron, A. (2019). <i>Hands-On Machine Learning with Scikit-Learn, Keras, and
+                                        TensorFlow</i> (2nd ed., pp. 113-120).
+                                    O'Reilly Media. Explica la regresión lineal simple y múltiple con ejemplos en
+                                    Python.
+                                </li>
+                                <li>
+                                    Hastie, T., Tibshirani, R., & Friedman, J. (2009). <i>The Elements of Statistical
+                                        Learning: Data Mining, Inference, and Prediction</i> (2nd ed., pp. 43-99).
+                                    Springer. Capítulo 3: Linear Methods for Regression, donde se desarrolla la teoría
+                                    de la linealidad en modelos predictivos.
+                                </li>
+                                <li>
+                                    James, G., Witten, D., Hastie, T., & Tibshirani, R. (2021). <i>An Introduction to
+                                        Statistical Learning: with Applications in R</i> (2nd ed., pp. 59-126).
+                                    Springer. Capítulo 3: Linear Regression, enfocado en la explicación intuitiva de la
+                                    linealidad y su aplicación práctica.
+                                </li>
+                                <li>
+                                    Shalev-Shwartz, S., & Ben-David, S. (2014). <i>Understanding Machine Learning: From
+                                        Theory to Algorithms</i> (pp. 147-154).
+                                    Cambridge University Press. Presenta la hipótesis lineal y modelos lineales
+                                    generalizados en el marco teórico de Machine Learning.
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+            </main>
+        </div>
+    </div>
+
+    <footer class="text-center py-4 bg-light mt-5">
+        <small class="text-muted">
+            Proyecto académico • Universidad de Cundinamarca • 2025
+        </small>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
