@@ -2,6 +2,7 @@ from flask import Flask, render_template, redirect, url_for, request
 app = Flask(__name__)
 import regresionLinear
 import regresionLogistica
+import catBoost
 
 @app.route("/")  
 def home():
@@ -82,6 +83,40 @@ def praticoLogistica():
 def conceptoTiposClasificacion():
     return render_template("conceptoTiposClasificacion.html")
 
+@app.route("/praticoTiposClasificacion", methods=["GET", "POST"])
+def praticoTiposClasificacion():
+    result = None
+    probas = None
+    comentario = None
+    metrics = None
+
+    if request.method == "POST":
+        longitud_texto = int(request.form["longitud_texto"])
+        palabras_clave = int(request.form["palabras_clave"])
+        puntuacion_asignada = int(request.form["puntuacion_asignada"])
+        categoria_producto = request.form["categoria_producto"]
+        pais_origen = request.form["pais_origen"]
+        threshold_str = request.form.get("threshold")  
+        threshold = float(threshold_str) if threshold_str else 0.5  
+
+        label, proba = catBoost.predict_label(
+            [longitud_texto, palabras_clave, puntuacion_asignada, categoria_producto, pais_origen],
+            threshold=threshold
+        )
+
+        result = label
+        probas = proba
+        comentario = f"Con threshold={threshold}, la probabilidad estimada es {proba:.4f}. El modelo clasifica la reseña como {label}."
+
+        metrics = catBoost.evaluate()
+
+    return render_template(
+        "praticoTiposClasificacion.html",
+        result=result,
+        probas=probas,
+        comentario=comentario,
+        metrics=metrics
+    )
 
 if __name__ == "__main__":
     app.run(debug=True)
