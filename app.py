@@ -78,5 +78,10 @@ def praticoLogistica():
         conf_matrix_file=conf_matrix_file
     )
 
+@app.route("/conceptoTiposClasificacion")
+def conceptoTiposClasificacion():
+    return render_template("conceptoTiposClasificacion.html")
+
+
 if __name__ == "__main__":
     app.run(debug=True)
